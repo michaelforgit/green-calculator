@@ -4,6 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import (StringField, TextAreaField, IntegerField, BooleanField,
                      RadioField, PasswordField, SubmitField)
 
+
 app = Flask(__name__)
 
 
