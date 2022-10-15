@@ -13,9 +13,15 @@ def index():
     return render_template('index.html')
 
 
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 
 @app.route("/car/", methods=['GET'])
 def car():
     return render_template('car.html')
+
+@app.route("/house/", methods=['GET'])
+def house():
+    return render_template('house.html')
