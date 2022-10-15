@@ -14,3 +14,7 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/car/", methods=['GET'])
+def car():
+    return render_template('car.html')
