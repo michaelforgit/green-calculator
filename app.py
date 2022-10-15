@@ -16,5 +16,12 @@ def index():
 def car():
     return render_template('car.html')
 
+@app.route("/house/", methods=['GET'])
+def house():
+    return render_template('house.html')
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
+
