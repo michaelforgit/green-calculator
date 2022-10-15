@@ -32,10 +32,31 @@
    }   
  } 
 
-  body{
+   p{
+      margin-bottom: 10rem;
+ }
+
+   .iconimages{
+   width: 75%;
+   height: 100%;
+   border-radius: 25%;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+
+ .iconimages:hover{
+   transition: .5s ease;
+   background-color: green;
+ }
+
+
+
+
+/* For now this is commented out because this is not the background we want. */
+
+  /* body{
    background-image: url(../imgs/isolated-tree-branch-white-background_1308-110233.png);
    background-size: cover;
    background-repeat: no-repeat;
    background-size: 50%;
    background-position: center;
-}
+} */
