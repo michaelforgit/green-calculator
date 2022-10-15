@@ -5,9 +5,12 @@ from wtforms import (StringField, TextAreaField, IntegerField, BooleanField,
                      RadioField, PasswordField, SubmitField, SelectField)
 from wtforms.validators import InputRequired, Length
 import os
+from flask_pymongo import PyMongo
 SECRET_KEY = os.urandom(32)
 
 app = Flask(__name__)
+app.config["MONGO_URI"] = os.getenv("DBKEY")
+mongo = PyMongo(app)
 app.config['SECRET_KEY'] = SECRET_KEY
 
 STATE_CHOICES = ['Tesla','Whip']
