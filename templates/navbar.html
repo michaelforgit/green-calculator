@@ -1,7 +1,7 @@
 <div class="m-4">
   <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-          <a href="#" class="navbar-brand">
+          <a href="{{url_for('index')}}" class="navbar-brand">
               <img src="/static/imgs/GGG.png" height="80">
           </a>
           <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -9,8 +9,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
               <div class="navbar-nav">
-                  <a href="#" class="nav-item nav-link active">Home</a>
-                  <a href="about" class="nav-item nav-link">About</a>
+                  <a href="{{url_for('index')}}" class="nav-item nav-link active">Home</a>
+                  <a href="{{url_for('about')}}" class="nav-item nav-link">About</a>
               </div>
           </div>
       </div>
