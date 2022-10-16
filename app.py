@@ -13,13 +13,28 @@ app.config["MONGO_URI"] = os.getenv("DBKEY")
 mongo = PyMongo(app)
 app.config['SECRET_KEY'] = SECRET_KEY
 
-STATE_CHOICES = ['Tesla','Whip']
+states=[]
+cars = []
+def updateGasDB():
+    print("Implement later")
+
+def populateStates():
+    for document in mongo.db.State_Gas_Price.find({}):
+        states.append(document["name"])
+
+def populateCars():
+    test = mongo.db.EV_Data.find().sort("Model", 1)
+    for document in test:   
+        cars.append(document["Model"])
+populateCars()
+populateStates()
 
 class CarForm(FlaskForm):
+    stateSelect = SelectField("Select State", choices=states, validators=[InputRequired()])
     mpg = IntegerField('Miles per gallon', validators=[InputRequired()])
     mpw = IntegerField("Miles per week", validators=[InputRequired()])
     gasPrice = IntegerField("Gas Price", validators=[InputRequired()])
-    carSelect = SelectField("Select Car", choices=STATE_CHOICES, validators=[InputRequired()])
+    carSelect = SelectField("Select Car", choices=cars, validators=[InputRequired()])
     carCost = IntegerField("Car Cost", validators=[InputRequired()])
     elecCost = IntegerField("Electricity Cost", validators=[InputRequired()])
     submit = SubmitField('See Results')

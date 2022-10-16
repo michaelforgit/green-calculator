@@ -12,15 +12,16 @@
             <label class="mb-2">Information about your current car.</label>
 
             <div class="form-control mb-2">
-            
+                {{form.stateSelect.label}}
+                {{ form.stateSelect(class_="form-control") }}
+
+
                 {{ form.mpg.label }}
                 {{ form.mpg(class_="form-control") }}
 
                 {{ form.mpw.label }}
                 {{ form.mpw(class_="form-control") }}
 
-                {{ form.gasPrice.label}}
-                {{ form.gasPrice(class_="form-control") }}
             </div>
             <label class="mb-2">Information about your future car.</label>
             <div class="form-control mb-2">
@@ -30,8 +31,6 @@
                 {{form.carCost.label}}
                 {{ form.carCost(class_="form-control") }}
 
-                {{form.elecCost.label}}
-                {{ form.elecCost(class_="form-control") }}
             </div>
             {{form.submit(class_="form-control btn btn-primary")}}
         </form>
