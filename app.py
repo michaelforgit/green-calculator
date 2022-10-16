@@ -20,6 +20,10 @@ def car():
 def house():
     return render_template('house.html')
 
+@app.route("/about/", methods=['GET'])
+def about():
+    return render_template('about.html')
+
 
 
 

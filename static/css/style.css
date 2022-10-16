@@ -66,8 +66,9 @@
   /* opacity: 0.5; */
   transition: .5s ease;
   background-color: rgba(150,150,150,0.5);
-  /* background-color-transparent: rgba(220,220,220,0.5); */
+  /* background-color-transparent: rgba(220,220,220,0.5); */  
 }
+
 
 
 /* For now this is commented out because this is not the background we want. */
