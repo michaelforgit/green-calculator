@@ -2,15 +2,15 @@
 {%block content%}
 <div class="container-fluid">
     <div class="text-center" id="title">
-        <p>Choose Area to Go Green</p>
+        <p>Choose an Area to <em>Go Green</em></p>
     </div>
-    <div class = "row mx-auto" style="max-width: 75%">
-        <div class="col text-center px-4">
-            <a href="{{ url_for('car') }}"><img width="100%" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"></a>
+    <div class = "row mx-auto mt-5" style="max-width: 75%">
+        <div class="col text-center px-4 choices c1">
+            <a href="{{ url_for('car') }}"><img width="100%" class="img-fluid iconimages" src="/static/imgs/Electric_car_icon.png"></a>
         </div>
 
-        <div class="col text-center px-4">
-            <a href="{{ url_for('house') }}"><img width="100%" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"></a>
+        <div class="col text-center px-4 choices c2">
+            <a href="{{ url_for('house') }}"><img width="100%" class="img-fluid iconimages" src="/static/imgs/the-power-of-solar.svg"></a>
         </div>
     </div>
 </div>
