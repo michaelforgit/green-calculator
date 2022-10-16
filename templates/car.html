@@ -1,11 +1,39 @@
 {% extends "base.html" %}
 {%block content%}
-<div class="container mt-3">
+<div class="container-fluid mt-3">
     <div class="row">
         <div class="col text-center">
-            <p style="font-size: 80px">EV Savings</p>
+            <p>EV Savings</p>
         </div>
     </div>
+    <div class="col-6 mx-auto">
+        <form form action="{{ url_for('result') }}", method="POST" action="/">
+            {{ form.csrf_token }}
+            <label class="mb-2">Information about your current car.</label>
 
+            <div class="form-control mb-2">
+                {{form.stateSelect.label}}
+                {{ form.stateSelect(class_="form-control") }}
+
+
+                {{ form.mpg.label }}
+                {{ form.mpg(class_="form-control") }}
+
+                {{ form.mpw.label }}
+                {{ form.mpw(class_="form-control") }}
+
+            </div>
+            <label class="mb-2">Information about your future car.</label>
+            <div class="form-control mb-2">
+                {{form.carSelect.label}}
+                {{ form.carSelect(class_="form-control") }}
+
+                {{form.carCost.label}}
+                {{ form.carCost(class_="form-control") }}
+
+            </div>
+            {{form.submit(class_="form-control btn btn-primary")}}
+        </form>
+    </div>
 </div>
 {%endblock%}

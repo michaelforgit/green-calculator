@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{%block content%}
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col-12 col-lg-6 text-center" style="position: relative">
+            <p>Cost per Year Comparison</p>
+            <canvas id="costComparison">
+
+            </canvas>
+        </div>
+        <div class="col-12 col-lg-6 text-center" style="position: relative">
+            <p>CO2 Emission Comparison</p>
+            <canvas id="co2Comparison">
+
+            </canvas>
+        </div>
+    </div>
+    <div class="row text-center mt-3">
+        <p>Regardless of whether you still own the vehicle your EV would prevent the Earth from {{(gasYearCO2[25]-electricYearCO2[25])|round|int}} CO2lb</p>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+<script>
+    const gas = JSON.parse('{{ gasYear | tojson }}');
+    const electric = JSON.parse('{{ electricYear | tojson }}');
+    const gas2 = JSON.parse('{{ gasYearCO2 | tojson }}')
+    const electric2 = JSON.parse('{{ electricYearCO2 | tojson }}');
+
+    var xValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+
+    new Chart("costComparison", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: "Electric",
+                data: electric,
+                borderColor: "red",
+                fill: false
+            },{
+                label: "Gas",
+                data: gas,
+                borderColor: "green",
+                fill: false
+            }]
+        },
+    options: {
+        scales: {
+            y: {
+                title: {
+                    display: true,
+                    text: "Dollars"
+                },
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: "Years"
+                },
+            },
+        },
+        
+        legend: {display: true}
+    }
+    });
+
+    new Chart("co2Comparison", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: "Electric",
+                data: electric2,
+                borderColor: "red",
+                fill: false
+            },{
+                label: "Gas",
+                data: gas2,
+                borderColor: "green",
+                fill: false
+            }]
+        },
+    options: {
+        scales: {
+            y: {
+                title: {
+                    display: true,
+                    text: "Dollars"
+                },
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: "Years"
+                },
+            },
+        },
+        
+        legend: {display: true}
+    }
+    });
+
+</script>
+  
+{%endblock%}
