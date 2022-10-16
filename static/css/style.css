@@ -2,6 +2,8 @@
 /* DEFAULT SMALLEST SCREEN */
 #title{
    font-size: 2em;
+   text-shadow: 5px 5px 10px grey;
+
 }
 
  /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -53,10 +55,13 @@
 
 /* For now this is commented out because this is not the background we want. */
 
-  /* body{
-   background-image: url(../imgs/isolated-tree-branch-white-background_1308-110233.png);
+  html, body{
+   height: 100%;
+   background-image: url(../imgs/finalPhoto.png);
    background-size: cover;
    background-repeat: no-repeat;
-   background-size: 50%;
-   background-position: center;
-} */
+   background-size: 100%;
+   background-position: bottom;
+   /* background-image: linear-gradient(to top, rgba(0,0,0,0) 0%,rgba(0,0,0,0)70%); */
+   
+}
