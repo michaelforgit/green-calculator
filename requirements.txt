@@ -2,3 +2,4 @@ Flask==2.2.2
 Flask_PyMongo==2.3.0
 Flask_WTF==1.0.1
 WTForms==3.0.1
+gunicorn
