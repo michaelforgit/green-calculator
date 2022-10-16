@@ -55,14 +55,17 @@ def calculateCostOverYears(carPrice, gasPrice, electricPrice, mpw, mpg, kWhMile)
         electricYear.append(electricYear[i-1]+electric)
     return electricYear, gasYear
 
-def calculateCO2OverYears(mpw):
+def calculateCO2OverYears(mpg, mpw, CO2lbmi):
     gasYearCO2 = []
-    gas = mpw*19.6*52
+    electricYearCO2 = []
+    gas = (mpw*19.6*52)/mpg
+    electric = mpw*CO2lbmi*52
     gasYearCO2.append(gas)
+    electricYearCO2.append(electric)
     for i in range(1, 26):
-        gasYearCO2.append(gasYearCO2+gas)
-    end
-
+        gasYearCO2.append(gasYearCO2[i-1]+gas)
+        electricYearCO2.append(electricYearCO2[i-1]+electric)
+    return electricYearCO2, gasYearCO2
 @app.route("/car/result", methods=['GET', 'POST'])
 def result():
     if request.method == 'POST':
@@ -77,13 +80,13 @@ def result():
         gasPriceSelect = mongo.db.State_Gas_Price.find_one({'name':stateSelect})
         electricPriceSelect = mongo.db.State_Electricity_Price.find_one({'State':stateSelect})
         car = mongo.db.EV_Data.find_one({"Model" : carSelect})
+        CO2lbmi = car['CO2lb/mi']
         kWhMile = car['kWh/mi']
         gasPrice = gasPriceSelect['gasoline']
         electricPrice = electricPriceSelect['Cents/kWh']
-        print("GAS PRICE IS: " + str(gasPrice))
-        print("ELECTRIC PRICE IS " + str(electricPrice))
         electricYear, gasYear = calculateCostOverYears(int(carPrice), float(gasPrice), electricPrice,  int(mpw), int(mpg), kWhMile)
-        return render_template('result.html', electricYear=electricYear, gasYear = gasYear)
+        electricYearCO2, gasYearCO2 = calculateCO2OverYears(int(mpg), int(mpw), float(CO2lbmi))
+        return render_template('result.html', electricYear=electricYear, gasYear = gasYear, gasYearCO2 = gasYearCO2, electricYearCO2 = electricYearCO2)
     return render_template('result.html')
 
 @app.route("/car/", methods=['GET', 'POST'])
