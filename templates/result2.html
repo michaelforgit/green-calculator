@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{%block content%}
+
+<div class="container mt-2 graphcontainer border border-dark border-0 border-md-3 mb-5">
+    <div class="row">
+        <div class="col-12 text-center mt-3" style="position: relative">
+            <p>Cost of electric over time.</p>
+            <canvas id="costComparison" style="padding-bottom:50px">
+                
+            </canvas>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+<script>
+    const withSolar = JSON.parse('{{ withSolar | tojson }}');
+    const withoutSolar = JSON.parse('{{ withoutSolar | tojson }}');
+
+
+    var xValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+
+    new Chart("costComparison", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: "With Solar",
+                data: withSolar,
+                borderColor: "red",
+                fill: false
+            },{
+                label: "Without Solar",
+                data: withoutSolar,
+                borderColor: "green",
+                fill: false
+            }]
+        },
+    options: {
+        scales: {
+            y: {
+                title: {
+                    display: true,
+                    text: "Price (Dollars)"
+                },
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: "Years"
+                },
+            },
+        },
+        
+        legend: {display: true}
+    }
+    });
+</script>
+  
+{%endblock%}

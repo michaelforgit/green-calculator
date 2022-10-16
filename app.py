@@ -15,8 +15,12 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 states=[]
 cars = []
+
+tiles = ["0-1000", "1000-1500", "1500-2000","2000-2500", "2500-3000", "3000+"]
+costTiles = [4400, 6693, 9371, 12048, 14726, 17850]
 def updateGasDB():
     print("Implement later")
+
 
 def populateStates():
     for document in mongo.db.State_Gas_Price.find({}):
@@ -39,9 +43,33 @@ class CarForm(FlaskForm):
     elecCost = IntegerField("Electricity Cost", validators=[InputRequired()])
     submit = SubmitField('See Results')
 
+
+class HouseForm(FlaskForm):
+    squareFT = SelectField("Select Square Footage", choices=tiles, validators=[InputRequired()])
+    stateSelect = SelectField("Select State", choices=states, validators=[InputRequired()])
+    submit = SubmitField('See Results')
+
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
+def calculateSolarCost(taxBreak, kWhMonth, electricityPrice, initialCostTiles):
+    withoutSolar = []
+    withSolar = []
+    electricityPrice=float(electricityPrice)/100
+    woSolari = kWhMonth * electricityPrice * 12
+    wSolari = ((((kWhMonth-750)*electricityPrice)*12)+((initialCostTiles)*(1-(taxBreak/100))))
+    withoutSolar.append(woSolari)
+    withSolar.append(wSolari)
+    for i in range(1, 26):
+        withSolar.append(withSolar[i-1]+(((kWhMonth-750)*electricityPrice)*12))
+        withoutSolar.append(withoutSolar[i-1]+woSolari)
+    print(withoutSolar)
+    return withSolar, withoutSolar
+
+
 
 def calculateCostOverYears(carPrice, gasPrice, electricPrice, mpw, mpg, kWhMile):
     gasYear = []
@@ -66,18 +94,18 @@ def calculateCO2OverYears(mpg, mpw, CO2lbmi):
         gasYearCO2.append(gasYearCO2[i-1]+gas)
         electricYearCO2.append(electricYearCO2[i-1]+electric)
     return electricYearCO2, gasYearCO2
+
 @app.route("/car/result", methods=['GET', 'POST'])
 def result():
     if request.method == 'POST':
-        print("HELLO WORLD")
-        print(request.form['mpw'])
-        print(request.form['stateSelect'])
         stateSelect = request.form['stateSelect']
         carSelect = request.form['carSelect']
         carPrice = request.form['carCost']
         mpw = request.form['mpw']
         mpg = request.form['mpg']
         gasPriceSelect = mongo.db.State_Gas_Price.find_one({'name':stateSelect})
+        if (stateSelect != "Minnesota" and stateSelect != "Iowa"):
+            stateSelect = "Iowa"
         electricPriceSelect = mongo.db.State_Electricity_Price.find_one({'State':stateSelect})
         car = mongo.db.EV_Data.find_one({"Model" : carSelect})
         CO2lbmi = car['CO2lb/mi']
@@ -93,9 +121,25 @@ def result():
 def car():
     return render_template('car.html', form=CarForm())
 
-@app.route("/house/", methods=['GET'])
+@app.route("/house/", methods=['GET', 'POST'])
 def house():
-    return render_template('house.html')
+    return render_template('house.html', form=HouseForm())
+
+@app.route('/house/result', methods=['GET', 'POST'])
+def result2():
+    if request.method == 'POST':
+        tileDict = {"0-1000":4400, "1000-1500":6693, "1500-2000":9371,"2000-2500":12048, "2500-3000":14726, "3000+":17850}
+
+        stateSelect = request.form['stateSelect']
+        squareFT = request.form['squareFT']
+        solarState = mongo.db.Solar_House.find_one({'State':"Iowa"})
+        taxBreak = solarState['TaxBreak']
+        kWh = solarState['kWh']
+        electricityPrice = solarState['ElectricityPrice']
+        initialCostTiles = tileDict[squareFT]
+        withSolar, withoutSolar = calculateSolarCost(taxBreak, kWh, electricityPrice, initialCostTiles)
+        return render_template('result2.html', withSolar=withSolar, withoutSolar=withoutSolar)
+    return render_template('result2.html')
 
 @app.route("/about/", methods=['GET'])
 def about():
