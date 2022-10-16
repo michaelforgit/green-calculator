@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {%block content%}
-<div class="container-fluid">
+<div class="container-fluid" id="trees">
     <div class="text-center" id="title">
-        <p>Choose an Area to <em>Go Green</em></p>
+        <p class="text-white">Choose an Area to <em>Go Green</em></p>
     </div>
-    <div class = "row mx-auto justify-content-center">
-        <div class="col-6 col-md-4  col-lg-3 text-center px-4 choices c1">
+    <div class = "row mx-auto justify-content-center mb-5">
+        <div class="col-6 col-md-4  col-lg-3 text-center px-4 choices c1 mx-0 mx-md-4">
             <a href="{{ url_for('car') }}"><img width="100%" class="img-fluid iconimages1" src="/static/imgs/JettaHatchback.png"></a>
         </div>
 
-        <div class="col-6 col-md-4 col-lg-3 text-center px-4 choices c2">
+        <div class="col-6 col-md-4 col-lg-3 text-center px-4 choices c2 mx-0 mx-md-4">
             <a href="{{ url_for('house') }}"><img width="100%" class="img-fluid iconimages2" src="/static/imgs/the-power-of-solar.svg"></a>
         </div>
         </div>

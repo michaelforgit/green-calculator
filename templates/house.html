@@ -1,12 +1,24 @@
 {% extends "base.html" %}
 {%block content%}
-
-<div class="container mt-3">
+<div class="container-fluid mt-5">
     <div class="row">
-        <div class="col text-center">
-            <p style="font-size: 80px">Hosue stuff dude</p>
+        <div class="col-md-6 col-12 mx-auto">
+            <div class="form-control">
+                <form form action="{{ url_for('result2') }}", method="POST" action="/">
+                    {{ form.csrf_token }}
+                    <label class="mb-3 mt-1">Enter information about your house:</label>
+
+                    <div class="mb-2">
+                        {{form.stateSelect.label}}
+                        {{ form.stateSelect(class_="form-control") }}
+
+                        {{ form.squareFT.label }}
+                        {{ form.squareFT(class_="form-control") }}
+                    </div>
+                    {{form.submit(class_="form-control btn btn-primary")}}
+                </form>
+            </div>
         </div>
     </div>
 </div>
-
 {%endblock%}
