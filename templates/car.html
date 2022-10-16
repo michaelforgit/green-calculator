@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {%block content%}
-<div class="container mt-3">
+<div class="container-fluid mt-3">
     <div class="row">
         <div class="col text-center">
             <p>EV Savings</p>
         </div>
     </div>
     <div class="col-6 mx-auto">
-        <form form action="{{ url_for('car') }}", method="POST" action="/">
+        <form form action="{{ url_for('result') }}", method="POST" action="/">
             {{ form.csrf_token }}
             <label class="mb-2">Information about your current car.</label>
 

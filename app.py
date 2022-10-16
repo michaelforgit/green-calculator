@@ -43,11 +43,43 @@ class CarForm(FlaskForm):
 def index():
     return render_template('index.html')
 
-@app.route("/car/", methods=['GET', 'POST'])
-def car():
+def calculateCostOverYears(carPrice, gasPrice, electricPrice, mpw, mpg, kWhMile):
+    gasYear = []
+    electricYear = []
+    gas = (gasPrice/mpg)*(mpw*52)
+    electric = (kWhMile*(electricPrice/100))*(mpw*52)
+    gasYear.append(gas)
+    electricYear.append(electric+carPrice)
+    for i in range(1, 26):
+        gasYear.append(gasYear[i-1]+gas)
+        electricYear.append(electricYear[i-1]+electric)
+    return electricYear, gasYear
+
+@app.route("/car/result", methods=['GET', 'POST'])
+def result():
     if request.method == 'POST':
         print("HELLO WORLD")
         print(request.form['mpw'])
+        print(request.form['stateSelect'])
+        stateSelect = request.form['stateSelect']
+        carSelect = request.form['carSelect']
+        carPrice = request.form['carCost']
+        mpw = request.form['mpw']
+        mpg = request.form['mpg']
+        gasPriceSelect = mongo.db.State_Gas_Price.find_one({'name':stateSelect})
+        electricPriceSelect = mongo.db.State_Electricity_Price.find_one({'State':stateSelect})
+        car = mongo.db.EV_Data.find_one({"Model" : carSelect})
+        kWhMile = car['kWh/mi']
+        gasPrice = gasPriceSelect['gasoline']
+        electricPrice = electricPriceSelect['Cents/kWh']
+        print("GAS PRICE IS: " + str(gasPrice))
+        print("ELECTRIC PRICE IS " + str(electricPrice))
+        electricYear, gasYear = calculateCostOverYears(int(carPrice), float(gasPrice), electricPrice,  int(mpw), int(mpg), kWhMile)
+        return render_template('result.html')
+    return render_template('result.html')
+
+@app.route("/car/", methods=['GET', 'POST'])
+def car():
     return render_template('car.html', form=CarForm())
 
 @app.route("/house/", methods=['GET'])
