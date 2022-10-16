@@ -81,7 +81,8 @@
    background-size: 100vh;
    background-size: 100vw;
    background-position: bottom;
-   overflow: hidden;
+   background-attachment: fixed;
+   /* overflow: hidden; */
 
    
    /* background-image: linear-gradient(to top, rgba(0,0,0,0) 0%,rgba(0,0,0,0)70%); */

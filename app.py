@@ -101,6 +101,10 @@ def house():
 def about():
     return render_template('about.html')
 
+@app.route("/aboutUs/", methods=['GET'])
+def aboutUs():
+    return render_template('about-us.html')
+
 
 
 
