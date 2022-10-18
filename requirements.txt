@@ -1,5 +1,5 @@
 Flask==2.2.2
 Flask_PyMongo==2.3.0
 Flask_WTF==1.0.1
+python-dotenv==0.21.0
 WTForms==3.0.1
-gunicorn
