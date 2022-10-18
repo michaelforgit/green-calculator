@@ -18,7 +18,7 @@
     </div>
     <div class="row text-center mt-3">
         <p>Over the next 25 years your electric vehicle would prevent {{(gasYearCO2[25]-electricYearCO2[25])|round|int}} CO2 lbs amount of emissions.</p>
-        <p></p>
+        <p>In 1 year you would need to plant {{(gasYearCO2[0]/48)|round|int}} trees to replace your CO2 emssions from your gas car.</p>
     </div>
 </div>
 
@@ -41,12 +41,12 @@
             datasets: [{
                 label: "Electric",
                 data: electric,
-                borderColor: "red",
+                borderColor: "green",
                 fill: false
             },{
                 label: "Gas",
                 data: gas,
-                borderColor: "green",
+                borderColor: "red",
                 fill: false
             }]
         },
@@ -77,12 +77,12 @@
             datasets: [{
                 label: "Electric",
                 data: electric2,
-                borderColor: "red",
+                borderColor: "green",
                 fill: false
             },{
                 label: "Gas",
                 data: gas2,
-                borderColor: "green",
+                borderColor: "red",
                 fill: false
             }]
         },
