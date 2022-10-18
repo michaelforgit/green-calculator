@@ -6,12 +6,16 @@ from wtforms import (StringField, TextAreaField, IntegerField, BooleanField,
 from wtforms.validators import InputRequired, Length
 import os
 from flask_pymongo import PyMongo
+from dotenv import find_dotenv, load_dotenv
 SECRET_KEY = os.urandom(32)
+
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = os.getenv("DBKEY")
-mongo = PyMongo(app)
 app.config['SECRET_KEY'] = SECRET_KEY
+mongo = PyMongo(app)
 
 states=[]
 cars = []
@@ -153,5 +157,5 @@ def aboutUs():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
