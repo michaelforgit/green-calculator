@@ -27,7 +27,7 @@ def updateGasDB():
 
 
 def populateStates():
-    for document in mongo.db.State_Gas_Price.find({}):
+    for document in mongo.db.State_Gas_Price.find({}).sort("name", 1):
         states.append(document["name"])
 
 def populateCars():
