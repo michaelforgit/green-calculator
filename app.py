@@ -9,7 +9,7 @@ from flask_pymongo import PyMongo
 SECRET_KEY = os.urandom(32)
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = os.getenv("DBKEY")
+app.config["MONGO_URI"] = "mongodb+srv://michael:Cbyx5c3th8go5e2l@cluster0.36xqifj.mongodb.net/Hackathon_Data"
 mongo = PyMongo(app)
 app.config['SECRET_KEY'] = SECRET_KEY
 
