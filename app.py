@@ -136,7 +136,7 @@ def result2():
 
         stateSelect = request.form['stateSelect']
         squareFT = request.form['squareFT']
-        solarState = mongo.db.Solar_House.find_one({'State':"Iowa"})
+        solarState = mongo.db.Solar_House.find_one({'State':stateSelect})
         taxBreak = solarState['TaxBreak']
         kWh = solarState['kWh']
         electricityPrice = solarState['ElectricityPrice']

@@ -1,79 +1,67 @@
 {% extends "base.html" %}
 {%block content%}
 
-<div class="conatiner">
-    <div class="row mx-2">
-        <div class="col text-center mx-3">
-            <img width="30%" style="border-radius: 50%;" class="img-fluid" src="/static/imgs/Michael.png">
-            <p style="margin-top: 15%; text-align: left; font-size: 14x;color:#ffffff; text-shadow: 2px 2px 15px rgb(6, 6, 6);"> 
-                Email:   michael.ogorman@go.stcloudstate.edu<br>
-                LinkedIn:  linkedin.com/michael-ogorman<br><br>
-                Hey, my name is Michael O'Gorman and I'm a senior at St. Cloud State University.  I love computer science and tutor for the computer science department at St. Cloud State.  I am currently open to offers on full time positions after graduation this May.  I specialize in Full Stack development, but love all types of programming.
-            </p>
+<div class="container mt-5 px-2 px-lg-5 d-flex justify-content-center align-items-center">
+    <div class="col-12">
+        <div class="mx-2 text-center">
+            <h1> About Us Page </h1>
         </div>
-        <div class="col text-center mx-3">
-            <img width="30%" style="border-radius: 50%;" class="img-fluid" src="/static/imgs/Lucas.jpeg">
-            <p style="margin-top: 15%; text-align: left; font-size: 14x;color:#FFFFFF; text-shadow: 2px 2px 15px rgb(6, 6, 6);"> 
-                Email: Lucasjamesralph@gmail.com  <br>
-                LinkedIn:  https://www.linkedin.com/in/lucas-ralph-995116207/<br><br>
-                Hello, I'm Lucas! I'm a senior at the University of Minnesota majoring in Computer Science. I would like to go into software development, and I hope to someday make an impact and benefit the world in a big way. 
-            </p>
+        <div class="row mx-2 mt-5">
+            <div class="col text-start m-3 bg-light p-3" style="border-radius: 10px;"> <!--background: linear-gradient(to bottom, #f8f9fa 0%, #f8f9fa 90%, #e4e4e4 90%, #e4e4e4 100%);-->
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <img style="border-radius: 5px" class="img-fluid" src="/static/imgs/Michael.png">
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h4>Michael O'Gorman</h4>
+                        <p class="mb-0"><small>michael.ogorman@go.stcloudstate.edu</small></p>
+                        <p><a href="https://www.linkedin.com/michael-ogorman"><small>linkedin.com/michael-ogorman</small></a></p>
+                        <p>Hey, my name is Michael O'Gorman and I'm a senior at St. Cloud State University. I have a passion for computer science and tutor for the computer science department at St. Cloud State.  I specialize in Full Stack development, but love all types of programming. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col text-start m-3 bg-light p-3" style="border-radius: 10px;">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <img style="border-radius: 5px" class="img-fluid" src="/static/imgs/Lucas.jpeg">
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h4>Lucas Ralph</h4>
+                        <p class="mb-0"><small>Lucasjamesralph@gmail.com</small></p>
+                        <p><a href="https://www.linkedin.com/in/lucas-ralph-995116207/"><small>linkedin.com/in/lucas-ralph-995116207/</small></a></p>
+                        <p>Hello, I'm Lucas! I'm a senior at the University of Minnesota majoring in Computer Science. I would like to go into software development, and I hope to someday make an impact and benefit the world in a big way. </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row mx-2">
-        <div class="col text-center mx-3">
-           <img width="30%" style="border-radius: 50%;" class="img-fluid" src="/static/imgs/Dan.JPG">
-            <p style="margin-top: 15%; text-align: left; font-size: 14x;color:#FFFFFF; text-shadow: 2px 2px 15px rgb(6, 6, 6);"> 
-                Email: dan.beletsky@gmail.com  <br>
-                LinkedIn: https://www.linkedin.com/in/danbeletsky/ <br><br>
-                Hey! My name is Dan Beletsky and I'm a junior in Electrical Engineering. I really enjoy the hardware part of electronics but I believe that learning software is essential to be a well rounded engineer. I hope to one day apply my knoweledge to benefit society!
-            </p>
-        </div>
-        <div class="col text-center mx-3">
-            <img width="30%" style="border-radius: 50%;" class="img-fluid" src="/static/imgs/Lily.jpeg">
-            <p style="margin-top: 15%; text-align: left; font-size: 14x;color:#FFFFFF; text-shadow: 2px 2px 15px rgb(6, 6, 6);"> 
-                Email: cicho039@morris.umn.edu  <br><br><br>
-                Hey, I'm Lily. I'm a junior at the University of Minnesota Morris. I am studying Biology and Data Science. In the future, I strive to work in a research lab analyzing statistics and helping our community.
-            </p>
+        <div class="row mx-2 mb-5">
+            <div class="col text-start m-3 bg-light p-3" style="border-radius: 10px">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <img style="border-radius: 5px" class="img-fluid" src="/static/imgs/Lily.jpeg">
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h4>Lily Cichon</h4>
+                        <p><small>cicho039@morris.umn.edu</small></p>
+                        <p> Hey, I'm Lily. I'm a junior at the University of Minnesota Morris. I am studying Biology and Data Science. In the future, I strive to work in a research lab analyzing statistics and helping our community. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col text-start m-3 bg-light p-3" style="border-radius: 10px">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <img style="border-radius: 5px" class="img-fluid" src="/static/imgs/Dan.JPG">
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h4>Dan Beletsky</h4>
+                        <p class="mb-0"><small>dan.beletsky@gmail.com</small></p>
+                        <p><a href="https://www.linkedin.com/in/danbeletsky/"><small>linkedin.com/in/danbeletsky/ </small></a></p>
+                        <p> Hey! My name is Dan Beletsky and I'm a junior in Electrical Engineering. I really enjoy the hardware part of electronics but I believe that learning software is essential to be a well rounded engineer. I hope to one day apply my knoweledge to benefit society! </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 {%endblock%}
-
-
-
-<!-- <div class="conatiner">
-    <div class="row">
-        <div class="col text-center">
-            <img width="10%" style="border-radius: 50%;" class="img-fluid" src="/static/imgs/Michael.png">
-            <p style="font-size: 14x;color:#ffffff; text-shadow: 2px 2px 15px rgb(6, 6, 6);"> 
-                Michael is my name, bad website names are my game
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col text-center">
-            <img width="10%" style="border-radius: 50%;" class="img-fluid" src="/static/imgs/Lucas.jpeg">
-            <p style="font-size: 14x;color:#FFFFFF; text-shadow: 2px 2px 15px rgb(6, 6, 6);"> 
-                Hello I'm Lucas, I'm a senior at the University of Minnesota majoring in Computer Science. I would like to go into software development, and I hope to someday make an impact and benefit this world distinctly. 
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col text-center">
-           <img width="10%" style="border-radius: 50%;" class="img-fluid" src="/static/imgs/Dan.JPG">
-            <p style="font-size: 14x;color:#FFFFFF; text-shadow: 2px 2px 15px rgb(6, 6, 6);"> 
-                Hey! My name is Dan Beletsky and I'm a junior in Electrical Engineering. I really enjoy the hardware part of electronics but I believe that learning software is essential to be a well rounded engineer. I hope to one day apply my knoweledge to benefit society!
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col text-center">
-            <img width="10%" style="border-radius: 50%;" class="img-fluid" src="/static/imgs/Lily.jpeg">
-            <p style="font-size: 14x;color:#FFFFFF; text-shadow: 2px 2px 15px rgb(6, 6, 6);"> 
-                Hey I'm Lily...
-            </p>
-        </div>
-    </div>
-</div> -->
