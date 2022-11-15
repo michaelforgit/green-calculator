@@ -1,6 +1,11 @@
 #title{
   font-size: 2em;
-  text-shadow: 5px 5px 10px rgb(0, 0, 0);
+
+  /* text-shadow: 5px 5px 10px rgb(0, 0, 0); */
+}
+
+.buttonText{
+  font-size: .5em;
 }
 
 .graphcontainer{
@@ -15,8 +20,6 @@
 }
 
 .iconimages1{
- width: 100%;
- height: 100%;
  object-fit: contain;
 }
 
@@ -30,8 +33,7 @@
 
 /* For now this is commented out because this is not the background we want. */
 
-html, body{
- height: 100%;
+body{
  background-image: url(../imgs/FinalSiteBackground.png);
  background-size: cover;
  background-repeat: no-repeat;
@@ -50,7 +52,7 @@ html, body{
 @media only screen and (min-width: 600px) {
   #title{
     font-size: 2em;
-}
+  }
  }
  
  /* Medium devices (landscape tablets, 768px and up) */
@@ -64,6 +66,9 @@ html, body{
 @media only screen and (min-width: 992px) {
   #title{
     font-size: 5em;
+  }
+  .buttonText{
+    font-size: 1.5em;
   }
  }
  
